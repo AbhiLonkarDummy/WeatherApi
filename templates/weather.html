@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="../static/styles.css" />
+  </head>
+  <body>
+    <h1>Weather App</h1>
+
+    <form method="POST" class="form">
+      <div class="input-wrapper">
+        <input
+          class="input-field"
+          type="text"
+          name="city"
+          placeholder="Enter city ex. Pune"
+          required
+        />
+        <input
+          class="input-field"
+          type="text"
+          name="language"
+          placeholder="Language (e.g., en)"
+        />
+        <button type="submit">Get Weather</button>
+      </div>
+    </form>
+    <div class="mid-container">
+      <div class="card">
+        <div class="card-heading">
+          <div class="card-text-heading">
+            <h2>
+              {{ data.location.name }}, {{ data.location.region }}, {{
+              data.location.country }}
+            </h2>
+            <p>{{ data.location.localtime[:10]}}</p>
+          </div>
+          <img src="{{ data.current.condition.icon }}" />
+        </div>
+
+        <div class="card-bottom-container">
+          <div class="card-bottom-text-container">
+            <h3>{{ data.current.condition.text }}</h3>
+            <div class="container">
+              <div class="left-container">
+                <div class="sub-text-info">
+                  <p>
+                    <span class="subtext">Temp: </span> {{ data.current.temp_c
+                    }}°C (Feels like {{ data.current.feelslike_c }}°C)
+                  </p>
+                  <p>
+                    <span class="subtext">Humidity: </span> {{
+                    data.current.humidity }}%
+                  </p>
+                  <p>
+                    <span class="subtext">Pressure: </span> {{
+                    data.current.pressure_mb }} mb
+                  </p>
+                </div>
+              </div>
+              <div class="right-container">
+                <div class="sub-text-info">
+                  <p>
+                    <span class="subtext">Cloud: </span> {{ data.current.cloud
+                    }}
+                  </p>
+                  <p>
+                    <span class="subtext">Wind Speed: </span> {{
+                    data.current.wind_kph }}%
+                  </p>
+                  <p>
+                    <span class="subtext">Wind Direction: </span> {{
+                    data.current.wind_dir }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
