@@ -43,7 +43,7 @@ BASE_API_URL = "http://api.weatherapi.com/v1/current.json"
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    fetchedData = None
+    data = None
 
     if request.method == "POST":
         city = request.form.get("city")
@@ -53,13 +53,13 @@ def index():
 
         response = requests.get(BASE_API_URL, params=params)
         if response.status_code == 200:
-            fetchedData = response.json()
+            data = response.json()
         else:
-            fetchedData = {
+            data = {
                 "error": "Could not fetch weather. Please check the city name."
             }
 
-    return render_template("weather.html", data=fetchedData)
+    return render_template("weather.html", data=data)
 
 
 if __name__ == "__main__":

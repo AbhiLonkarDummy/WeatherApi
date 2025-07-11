@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Weather App</title>
+    <title>Weather App by Abhishek</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,6 +32,9 @@
         <button type="submit">Get Weather</button>
       </div>
     </form>
+    {% if data %} {% if data.error %}
+    <p style="color: red">{{ data.error }}</p>
+    {% else %}
     <div class="mid-container">
       <div class="card">
         <div class="card-heading">
@@ -85,5 +89,6 @@
         </div>
       </div>
     </div>
+    {% endif %} {% endif %}
   </body>
 </html>
